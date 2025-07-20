@@ -38,7 +38,7 @@ As for calling the binary, I ended up using [Command](https://swiftpackageindex.
 
 ### Code signing
 
-Already thinking I was done and ready to submit the app to the App Store, I was in for a surprise. The App Store requires all code to be signed, and that includes the Rust binary. So I had to figure out how to sign the binary. There's a [couple](https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Procedures/Procedures.html) of [articles](https://developer.apple.com/documentation/xcode/creating-distribution-signed-code-for-the-mac) and apple development documentation on how to do this. For my use case, it boiled down to running the following command in the "Run Script" build phase of my Xcode project:
+Already thinking I was done and ready to submit the app to the App Store, I was in for a surprise. The App Store requires all code to be signed, and that includes the Rust binary. So I had to figure out how to sign the binary. There's a [couple](https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Procedures/Procedures.html) of [articles](https://developer.apple.com/documentation/xcode/creating-distribution-signed-code-for-the-mac) and [apple development documentation](https://developer.apple.com/documentation/xcode/embedding-a-helper-tool-in-a-sandboxed-app#Embed-an-externally-built-tool) on how to do this. For my use case, it boiled down to running the following command in the "Run Script" build phase of my Xcode project:
 
     codesign -s - -i com.fastapps.magicgallery.image-manip-cli -o runtime --entitlements ../image-manip-cli.entitlements -f image-manip-cli
 
