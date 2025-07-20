@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import { post as galleryMagicRust } from "./posts/shipping-rust-on-macos-app-store";
 import { post as galleryMagicIntro } from "./posts/gallerymagic-20-years-late";
 import { post as stuffJustWorks } from "./posts/stuff-just-works";
 import { post as composableArchitectureReview } from "./posts/composable-architecture-review";
@@ -80,6 +81,7 @@ function getPostsForPage(posts, query) {
 
 function getAllPosts() {
   return [
+    galleryMagicRust,
     galleryMagicIntro,
     stuffJustWorks,
     composableArchitectureReview,
