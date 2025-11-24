@@ -65,7 +65,7 @@ Straight after that, since I have an M3 Mac, I had to solve also making this wor
     cargo build --release --target=aarch64-apple-darwin
     cargo build --release --target=x86_64-apple-darwin
 
-Up next is a line which squashes together the two binaries into a single universal binary. You can't really decide in your app itself at runtime which architecture the user's machine is running, you have to defer to the OS here. Using the lipo tool which comes as part of Xcode and is automatically be available in the build environment:
+Up next is a line which squashes together the two binaries into a single universal binary. You can't really decide in your app itself at runtime which architecture the user's machine is running, you have to defer to the OS here. Using the lipo tool which comes as part of Xcode and is automatically available in the build environment:
 
     lipo -create -output \\
       target/universal/image-manip-cli \\
