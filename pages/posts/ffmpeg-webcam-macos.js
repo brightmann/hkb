@@ -13,7 +13,7 @@ I needed a way to pull snapshots from my MacBook Air's webcam for comparison. An
 ffmpeg -ss 0.5 -f avfoundation -framerate 30 -video_size 640x480 -i "0" -frames:v 1 capture_%03d.jpg
 \`\`\`
 
-  If I omit \`-framerate 30\`, ffmpeg (or is it \`AVFoundation\` under the hood?) prints somewhat helpfully:
+If I omit \`-framerate 30\`, ffmpeg (or is it \`AVFoundation\` under the hood?) prints somewhat helpfully:
 
 \`\`\`
 [avfoundation @ 0x960c28000] Selected framerate (29.970030) is not supported by the device.
@@ -29,6 +29,22 @@ ffmpeg -ss 0.5 -f avfoundation -framerate 30 -video_size 640x480 -i "0" -frames:
 
 And because the default size is a portrait format (1080 × 1920), that gave me the clue of what other
 format sizes are supported.
+
+Oh and if you want to get rid of the warning
+
+\`\`\`
+[avfoundation @ 0xc7ec64000] Selected pixel format (yuv420p) is not supported by the input device.
+[avfoundation @ 0xc7ec64000] Supported pixel formats:
+[avfoundation @ 0xc7ec64000]   uyvy422
+[avfoundation @ 0xc7ec64000]   yuyv422
+[avfoundation @ 0xc7ec64000]   nv12
+[avfoundation @ 0xc7ec64000]   0rgb
+[avfoundation @ 0xc7ec64000]   bgr0
+[avfoundation @ 0xc7ec64000] Overriding selected pixel format to use uyvy422 instead.
+\`\`\`
+
+then add in a \`-pixel_format uyvy422\`. That must come before the -i option, to make sure it applies to
+the input, not the output.
 
 Now for the last hint: The webcam needs some time to adjust exposure. Without \`-ss 0.5\`, or even with
 a wait time of just 0.1 seconds, the image comes out very dark. Half a second does the trick for me.
