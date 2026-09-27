@@ -85,8 +85,9 @@ function getPostsForPage(posts, query) {
 
 function getAllPosts() {
   return [
-    fh,
+    advice,
     ce,
+    fh,
     ffmpegMacos,
     galleryMagicRust,
     galleryMagicIntro,
