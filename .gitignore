@@ -2,3 +2,7 @@ node_modules/
 .next/
 .open-next/
 .wrangler/
+
+# cloudflare workers build
+/.open-next/
+/.wrangler/
